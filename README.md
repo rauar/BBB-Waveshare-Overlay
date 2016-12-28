@@ -6,6 +6,8 @@ Device tree overlay for a Waveshare 3.2" TFT display on the Beaglebone Black (To
 
 The necessary pins for operating the display have been determined based on the Raspberry Pi pin layout (the display is actually sold as a display for the Raspberry Pi). Those pins then need to be connected to the Beaglebone Black. I used the P9 header exclusively (SPI0 and 3 GPIO pins).
 
+The display does not run on 3.3V only. I used 5V from the BBB - only then the backlight is turning on. 3.3V is currently not connected.
+
 
 
 1. git clone https://github.com/beagleboard/bb.org-overlays
@@ -21,16 +23,18 @@ Tested with:
 * BBB SPI0 pins (SPI0_CS0, SPI0_SCLK, SPI0_D0, SPI0_D1)
 * BBB GPIO pins (GPIO_49, GPIO_115, GPIO_117)
 
+The TFT pins correspond to the Raspberry pin layout (e.g. pin 1 is 3.3V).
+
 * (BBB Pin) -> (TFT Pin)
-* SYS_V5    -> Pin 2
-* GND       -> Pin 9
-* SPI0_CS0  -> Pin 
-* SPI0_SCLK
-* SPI0_D0
-* SPI0_D1
-* GPIO_49
-* GPIO_115
-* GPIO_117
+* SYS_V5    -> P2
+* GND       -> P9
+* SPI0_CS0  -> P24
+* SPI0_SCLK -> P23
+* SPI0_D0   -> P21
+* SPI0_D1   -> P19
+* GPIO_49   -> P15
+* GPIO_117  -> P13
+* GPIO_115  -> P11
 
 # References
 
