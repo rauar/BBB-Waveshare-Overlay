@@ -45,4 +45,8 @@ The out-of-the-gox device tree overlay on Raspbian uses the SPI0 pins and GPIO 1
 ## Beaglebone Black pin layout
 ![alt text](http://rabbit-note.com/wp-content/uploads/2014/08/cape-headers.png "Beaglebone Black pin mapping")
 
+## Wiring photos
+![alt text](https://github.com/rauar/BBB-Waveshare-Overlay/blob/master/IMG_2629.JPG)
+![alt text](https://github.com/rauar/BBB-Waveshare-Overlay/blob/master/IMG_2630.JPG)
+![alt text](https://github.com/rauar/BBB-Waveshare-Overlay/blob/master/IMG_2631.JPG)
 
