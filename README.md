@@ -32,8 +32,12 @@ Tested with:
 * GPIO_115
 * GPIO_117
 
+# References
+
+## Raspberry pin layout
 ![alt text](https://az835927.vo.msecnd.net/sites/iot/Resources/images/PinMappings/RP2_Pinout.png "TFT pin mapping based on Raspberry Pi")
 
+## Beaglebone Black pin layout
 ![alt text](http://rabbit-note.com/wp-content/uploads/2014/08/cape-headers.png "Beaglebone Black pin mapping")
 
 
