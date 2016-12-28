@@ -32,9 +32,9 @@ The TFT pins correspond to the Raspberry pin layout (e.g. pin 1 is 3.3V).
 * SPI0_SCLK:P9.22 -> P23
 * SPI0_D0:  P9.21 -> P21
 * SPI0_D1:  P9.18 -> P19
-* GPIO_49:  P9.23 -> P15
-* GPIO_117: P9.25 -> P13
-* GPIO_115: P9.27 -> P11
+* DC-GPIO:  P9.23 -> P15
+* Reset:    P9.25 -> P13
+* Pen Down: P9.27 -> P11
 
 # References
 
