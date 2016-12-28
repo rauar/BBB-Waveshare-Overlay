@@ -35,6 +35,7 @@ Tested with:
 # References
 
 ## Raspberry pin layout
+The out-of-the-gox device tree overlay on Raspbian uses the SPI0 pins and GPIO 17, 22, 27.
 ![alt text](https://az835927.vo.msecnd.net/sites/iot/Resources/images/PinMappings/RP2_Pinout.png "TFT pin mapping based on Raspberry Pi")
 
 ## Beaglebone Black pin layout
