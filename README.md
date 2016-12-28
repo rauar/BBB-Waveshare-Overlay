@@ -25,16 +25,16 @@ Tested with:
 
 The TFT pins correspond to the Raspberry pin layout (e.g. pin 1 is 3.3V).
 
-* (BBB Pin) -> (TFT Pin)
-* SYS_V5    -> P2
-* GND       -> P9
-* SPI0_CS0  -> P24
-* SPI0_SCLK -> P23
-* SPI0_D0   -> P21
-* SPI0_D1   -> P19
-* GPIO_49   -> P15
-* GPIO_117  -> P13
-* GPIO_115  -> P11
+* Function: BBB Pin -> Pin on display board
+* SYS_V5:   P9.5  -> P2
+* GND:      P9.1  -> P9
+* SPI0_CS0: P9.17 -> P24
+* SPI0_SCLK:P9.22 -> P23
+* SPI0_D0:  P9.21 -> P21
+* SPI0_D1:  P9.18 -> P19
+* GPIO_49:  P9.23 -> P15
+* GPIO_117: P9.25 -> P13
+* GPIO_115: P9.27 -> P11
 
 # References
 
