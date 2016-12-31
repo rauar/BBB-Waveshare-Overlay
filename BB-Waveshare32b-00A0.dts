@@ -1,6 +1,8 @@
 /*
  * Device Tree overlay for waveshare 3.2inch TFT LCD
  *
+ * @author: Alex rau (rau.alex@gmail.com)
+ *
  */
 
 /dts-v1/;
@@ -16,29 +18,30 @@
         version = "00A0";
 
         exclusive-use =
-                "P9.17",
-                "P9.18", "P9.21","P9.22", "P9.23", "P9.25", "P9.27",
-                "spi0", "gpio1_17", "gpio3_21", "gpio3_19";
+                "P9.28",
+                "P9.29", "P9.30","P9.31", "P9.30", "P9.23", "P9.25", "P9.27",
+                "spi1", "gpio1_17", "gpio3_21", "gpio3_19";
 
         fragment@0 {
                 target = <&am33xx_pinmux>;
                 __overlay__ {
                         waveshare32b_pins: pinmux_waveshare32b_pins {
                                 pinctrl-single,pins = <
-                                        BONE_P9_17 (PIN_OUTPUT | MUX_MODE0) //SPI0_CS0
-                                        BONE_P9_18 (PIN_OUTPUT | MUX_MODE0) //SPI0_D1
-                                        BONE_P9_21 (PIN_INPUT | MUX_MODE0)  //SPI0_D0
-                                        BONE_P9_22 (PIN_INPUT | MUX_MODE0)  //SPI0_SCLK
-                                        BONE_P9_23 (PIN_INPUT | MUX_MODE7)
-                                        BONE_P9_25 (PIN_OUTPUT | MUX_MODE7)
-                                        BONE_P9_27 (PIN_OUTPUT | MUX_MODE7)
+                                        BONE_P9_28 (PIN_OUTPUT | MUX_MODE3) //SPI1_CS0
+                                        BONE_P9_42A (PIN_OUTPUT | MUX_MODE2) //SPI1_CS1
+                                        BONE_P9_30 (PIN_OUTPUT | MUX_MODE3) //SPI1_D1
+                                        BONE_P9_29 (PIN_INPUT_PULLDOWN | MUX_MODE3)  //SPI1_D0
+                                        BONE_P9_31 (PIN_INPUT | MUX_MODE3)  //SPI1_SCLK
+                                        BONE_P9_23 (PIN_OUTPUT | MUX_MODE7) // Direct Command for TFT
+                                        BONE_P9_25 (PIN_OUTPUT | MUX_MODE7) // Reset TFT
+                                        BONE_P9_27 (PIN_INPUT_PULLUP | MUX_MODE7) // Touch interrupt from TFT
                                 >;
                         };
                 };
         };
-/*
+
         fragment@1 {
-                target = <&spi0>;
+                target = <&spi1>;
                 __overlay__ {
                         status = "okay";
 
@@ -51,20 +54,20 @@
                         };
                 };
         };
-*/
+
         fragment@2 {
-                target = <&spi0>;
+                target = <&spi1>;
                 __overlay__ {
                         #address-cells = <1>;
                         #size-cells = <0>;
 
-                        waveshare32b: waveshare32b@0{
-                                compatible = "ilitek,ili9340";
-                                reg = <0>;
                                 pinctrl-names = "default";
                                 pinctrl-0 = <&waveshare32b_pins>;
 
-                                spi-max-frequency = <48000000>;
+                        waveshare32b: waveshare32b@0{
+                                compatible = "ilitek,ili9340";
+                                reg = <0>;
+                                 spi-max-frequency = <48000000>;
                                 txbuflen = <32768>;
                                 rotate = <90>;
                                 fps = <60>;
@@ -79,13 +82,19 @@
                                 compatible = "ti,ads7846";
                                 reg = <1>;
 
-                                spi-max-frequency = <2000000>;
-                                interrupts = <19 2>;
+                                spi-max-frequency = <1000000>;
+                                interrupts = <19 0>;
                                 interrupt-parent = <&gpio3>;
-                                pendown-gpio = <&gpio3 19 2>;
+                                pendown-gpio = <&gpio3 19 0>;
+                                ti,x-min = /bits/ 16 <0>;
+                                ti,y-min = /bits/ 16 <0>;
+                                ti,x-max = /bits/ 16 <0x0FFF>;
+                                ti,y-max = /bits/ 16 <0x0FFF>;
+                                ti,pressure-min = /bits/ 16 <0>;
+                                ti,pressure-max = /bits/ 16 <0xFFFF>;
                                 ti,x-plate-ohms = /bits/ 16 <60>;
-                                ti,pressure-max = /bits/ 16 <255>;
-                                debug = <3>;
+                                wakeup-source;
+                                verbose = <1>;
                         };
                 };
         };
@@ -101,3 +110,4 @@
         };
 
 };
+                                                 
