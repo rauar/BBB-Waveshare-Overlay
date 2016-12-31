@@ -2,11 +2,13 @@
 
 ## Overview
 
-Device tree overlay for a Waveshare 3.2" TFT display on the Beaglebone Black (Touch events not working yet). *Use at your own risk* (especially w.r.t to wiring).
+Device tree overlay for a Waveshare 3.2" TFT display and touch control connected to a Beaglebone Black. _Use at your own risk_ (especially w.r.t to wiring).
 
-The necessary pins for operating the display have been determined based on the Raspberry Pi pin layout (the display is actually sold as a display for the Raspberry Pi). Those pins then need to be connected to the Beaglebone Black. I used the P9 header exclusively (SPI0 and 3 GPIO pins).
+The necessary pins on the display's header have been determined based on the Raspberry Pi pin layout (the display is actually sold as a display for the Raspberry Pi). Not all pins on the header have to be connected.
 
-The display does not run on 3.3V only. I used 5V from the BBB - only then the backlight is turning on. 3.3V is currently not connected.
+On the BeagleBone Black I used the P9 header exclusively (SPI1 and 3 GPIO pins). Do not use SPI0 on the BBB as SPI0 can only select one slave - the display however has to SPI slaves (display controller and touch controller). SPI1 works.
+
+The display does not run on 3.3V only. I used 5V from the BBB - only then the backlight is turning on. 3.3V is not required.
 
 
 
@@ -28,10 +30,11 @@ The TFT pins correspond to the Raspberry pin layout (e.g. pin 1 is 3.3V).
 * Function: BBB Pin -> Pin on display board
 * SYS_V5:   P9.5  -> P2
 * GND:      P9.1  -> P9
-* SPI0_CS0: P9.17 -> P24
-* SPI0_SCLK:P9.22 -> P23
-* SPI0_D0:  P9.21 -> P21
-* SPI0_D1:  P9.18 -> P19
+* SPI1_CS0: P9.28 -> P24
+* SPI1_CS1: P9.42 -> P26
+* SPI1_SCLK:P9.31 -> P23
+* SPI1_D0:  P9.29 -> P21
+* SPI1_D1:  P9.30 -> P19
 * DC-GPIO:  P9.23 -> P15
 * Reset:    P9.25 -> P13
 * Pen Down: P9.27 -> P11
