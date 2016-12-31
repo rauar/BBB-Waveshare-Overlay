@@ -6,7 +6,7 @@ Device tree overlay for a Waveshare 3.2" TFT display and touch control connected
 
 The necessary pins on the display's header have been determined based on the Raspberry Pi pin layout (the display is actually sold as a display for the Raspberry Pi). Not all pins on the header have to be connected.
 
-On the BeagleBone Black I used the P9 header exclusively (SPI1 and 3 GPIO pins). Do not use SPI0 on the BBB as SPI0 can only select one slave - the display however has to SPI slaves (display controller and touch controller). SPI1 works.
+On the BeagleBone Black I used the P9 header exclusively (SPI1 and 3 GPIO pins). _Do not use SPI0_ for driving the display on the BBB if you want to have touch support as well. The SPI0 CS1 pin of the CPU is not available on the pin header and therefore the BBB can only select one single slave on SPI0.  The display however has two SPI slaves (display controller and touch controller). Therefore SPI1 is required for display and touch support.
 
 The display does not run on 3.3V only. I used 5V from the BBB - only then the backlight is turning on. 3.3V is not required.
 
