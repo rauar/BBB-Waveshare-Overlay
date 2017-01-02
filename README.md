@@ -22,9 +22,11 @@ The display does not run on 3.3V only. I used 5V from the BBB - only then the ba
 
 ## Wiring:
 
+SPI0 does not support the display controller and the touch controller at the same time.
+
 Tested with:
 
-* BBB SPI0 pins (SPI0_CS0, SPI0_SCLK, SPI0_D0, SPI0_D1)
+* BBB SPI1 pins (SPI1_CS0, SPI1_CS1, SPI1_SCLK, SPI1_D0, SPI1_D1)
 * BBB GPIO pins (GPIO_49, GPIO_115, GPIO_117)
 
 The TFT pins for the displays need to be connected to the BBB as follows (e.g. pin 1 on the raspberry is the 3.3V pin).
