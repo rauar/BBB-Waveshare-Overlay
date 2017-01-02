@@ -14,7 +14,9 @@ The display does not run on 3.3V only. I used 5V from the BBB - only then the ba
 
 1. git clone https://github.com/beagleboard/bb.org-overlays
 2. git clone https://github.com/rauar/BBB-Waveshare-Overlay.git
-3. cp BBB-Waveshare-Overlay/BB-Waveshare32-00A0.dts ./bb.org-overlays/src/arm/
+3. copy device tree overlay for the display into bb.org-overlays:
+ 1. for the 3.2" display:cp BBB-Waveshare-Overlay/BB-Waveshare32b-00A0.dts ./bb.org-overlays/src/arm/
+ 2. for the 3.5" display:cp BBB-Waveshare-Overlay/BB-Waveshare35-00A0.dts ./bb.org-overlays/src/arm/
 4. cd ./bb.org-overlays
 5. ./install.sh
 
